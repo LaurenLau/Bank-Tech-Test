@@ -1,5 +1,10 @@
 # Bank tech test
 
+### Using this application
+
+1. Type `node` into the command line
+2. Once in the node REPL. Type `.load ./lib/bank.js`
+
 ### Requirements
 
 * You should be able to interact with your code via a REPL like IRB or the JavaScript console.  (You don't need to implement a command line interface that takes input from STDIN.)
@@ -10,7 +15,7 @@
 ### User stories 
 
 ```
-As a user... 
+As a user
 
 I would like to deposit money into my bank account
 
