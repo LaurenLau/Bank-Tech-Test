@@ -30,14 +30,15 @@ describe('Bank', function() {
   });
 
   it('can show an empty bank statement', function() {
-    expect(bank.statement).toBe('date || deposits || withdrawals || balance')
+    expect(bank.showStatement()).toBe('   date   || credit || debit || balance')
   });
 
-  // it('can show one transaction', function() {
-  //   bank.deposit(100)
-  //   expect(bank.statement).toBe(
-  //     'date       || deposits || withdrawals || balance \n 23/09/2019 ||   £100   ||      £0     ||   £100'
-  //     )
-  // })
+  it('can show one transaction', function() {
+    bank.deposit(100)
+
+    expect(bank.showStatement()).toBe(
+      '   date   || credit || debit || balance\n Wed Sep 25 2019 || £0 || £100 || £100'
+      )
+  })
   
 });
