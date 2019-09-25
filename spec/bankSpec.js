@@ -1,5 +1,3 @@
-/* bankSpec.js */
-
 
 describe('Bank', () => {
   const Bank = require('../lib/bank');
@@ -31,13 +29,16 @@ describe('Bank', () => {
   });
 
   it('can show an empty bank statement', () => {
-    expect(bank.showStatement()).toBe('   date   || credit || debit || balance');
+    expect(bank.showStatement()).toBe(
+        '    date    || credit || debit || balance '
+    );
   });
 
   it('can show one transaction', () => {
     bank.deposit(100);
     expect(bank.showStatement()).toBe(
-        '   date   || credit || debit || balance\n Wed Sep 25 2019 ||   || £100 || £100',
+        '    date    || credit || debit || balance \n' +
+      ' 25/09/2019 ||        ||  £100 || £100 '
     );
   });
 });
