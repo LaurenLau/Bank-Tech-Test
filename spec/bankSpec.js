@@ -37,7 +37,7 @@ describe('Bank', function() {
     bank.deposit(100)
 
     expect(bank.showStatement()).toBe(
-      '   date   || credit || debit || balance\n Wed Sep 25 2019 || £0 || £100 || £100'
+      '   date   || credit || debit || balance\n Wed Sep 25 2019 ||   || 100 || £100'
       )
   })
   
