@@ -18,7 +18,7 @@
 As a user
 
 I would like to deposit money into my bank account
-
+  
 I would like to withdraw money from my bank account
 
 I would like a bank statement with a history of all transactions

@@ -1,44 +1,43 @@
-'use strict';
+/* bankSpec.js */
 
-describe('Bank', function() {
-  var Bank = require('../lib/bank');
 
-  var bank; 
+describe('Bank', () => {
+  const Bank = require('../lib/bank');
 
-  beforeEach(function() {
+  let bank;
+
+  beforeEach(() => {
     bank = new Bank();
   });
 
-  it('has a default balance of £0', function() {
-    expect(bank.balance).toBe(0)
+  it('has a default balance of £0', () => {
+    expect(bank.balance).toBe(0);
   });
 
-  it('deposits money into the account', function() {
-    bank.deposit(200)
-    expect(bank.balance).toBe(200)
+  it('deposits money into the account', () => {
+    bank.deposit(200);
+    expect(bank.balance).toBe(200);
   });
 
-  it('withdraws money from the account', function() {
-    bank.deposit(100)
-    bank.withdraw(50)
-    expect(bank.balance).toBe(50)
+  it('withdraws money from the account', () => {
+    bank.deposit(100);
+    bank.withdraw(50);
+    expect(bank.balance).toBe(50);
   });
 
-  it('cannot withdraw an amount larger than the current balance', function() {
-    bank.deposit(100)
-    expect(bank.withdraw(101)).toBe('Not enough money')
+  it('cannot withdraw an amount larger than the current balance', () => {
+    bank.deposit(100);
+    expect(bank.withdraw(101)).toBe('Not enough money');
   });
 
-  it('can show an empty bank statement', function() {
-    expect(bank.showStatement()).toBe('   date   || credit || debit || balance')
+  it('can show an empty bank statement', () => {
+    expect(bank.showStatement()).toBe('   date   || credit || debit || balance');
   });
 
-  it('can show one transaction', function() {
-    bank.deposit(100)
-
+  it('can show one transaction', () => {
+    bank.deposit(100);
     expect(bank.showStatement()).toBe(
-      '   date   || credit || debit || balance\n Wed Sep 25 2019 ||   || 100 || £100'
-      )
-  })
-  
+        '   date   || credit || debit || balance\n Wed Sep 25 2019 ||   || 100 || £100',
+    );
+  });
 });
