@@ -17,28 +17,32 @@ describe('Bank', () => {
     expect(bank.balance).toBe(200);
   });
 
-  it('withdraws money from the account', () => {
-    bank.deposit(100);
-    bank.withdraw(50);
-    expect(bank.balance).toBe(50);
+  describe('withdrawals', () => {
+    it('withdraws money from the account', () => {
+      bank.deposit(100);
+      bank.withdraw(50);
+      expect(bank.balance).toBe(50);
+    });
+
+    it('cannot withdraw an amount larger than the current balance', () => {
+      bank.deposit(100);
+      expect(bank.withdraw(101)).toBe('Not enough money');
+    });
   });
 
-  it('cannot withdraw an amount larger than the current balance', () => {
-    bank.deposit(100);
-    expect(bank.withdraw(101)).toBe('Not enough money');
-  });
+  describe('showStatement', () => {
+    it('can show an empty bank statement', () => {
+      expect(bank.showStatement()).toMatch(
+          '    date    || credit || debit || balance '
+      );
+    });
 
-  it('can show an empty bank statement', () => {
-    expect(bank.showStatement()).toBe(
-        '    date    || credit || debit || balance '
-    );
-  });
-
-  it('can show one transaction', () => {
-    bank.deposit(100);
-    expect(bank.showStatement()).toBe(
-        '    date    || credit || debit || balance \n' +
-      ' 25/09/2019 ||        ||  £100 || £100 '
-    );
+    it('can show one transaction', () => {
+      bank.deposit(100);
+      expect(bank.showStatement()).toMatch(
+          '    date    || credit || debit || balance \n' +
+        ' 26/09/2019 ||        ||  £100 || £100 '
+      );
+    });
   });
 });
