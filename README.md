@@ -1,6 +1,6 @@
 # Bank tech test
 
-### Using this application
+### Starting up the application
 
 1. Install node and type `node` into the command line
 2. Once in node REPL. Type `Bank = require('../lib/bank')`
