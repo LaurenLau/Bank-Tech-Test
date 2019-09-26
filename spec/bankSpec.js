@@ -14,10 +14,18 @@ describe('Bank', () => {
     expect(bank.balance).toBe(0);
   });
 
-  it('deposits money into the account', () => {
-    bank.deposit(200);
-    expect(bank.balance).toBe(200);
+  describe('deposits', () => {
+    it('deposits money into the account', () => {
+      bank.deposit(200);
+      expect(bank.balance).toBe(200);
+    });
+
+    it('cannot deposit an amount larger than 100,000', () => {
+      expect(bank.deposit(100001)).toBe('Please try a smaller amount');
+      expect(bank.deposit(12345678912345)).toBe('Please try a smaller amount');
+    });
   });
+
 
   describe('withdrawals', () => {
     it('withdraws money from the account', () => {
