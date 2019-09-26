@@ -1,3 +1,5 @@
+const moment = require('moment');
+moment.locale('en-gb');
 
 describe('Bank', () => {
   const Bank = require('../lib/bank');
@@ -31,6 +33,8 @@ describe('Bank', () => {
   });
 
   describe('showStatement', () => {
+    const currentDate = moment().format('L');
+
     it('can show an empty bank statement', () => {
       expect(bank.showStatement()).toMatch(
           '    date    || credit || debit || balance '
@@ -41,7 +45,21 @@ describe('Bank', () => {
       bank.deposit(100);
       expect(bank.showStatement()).toMatch(
           '    date    || credit || debit || balance \n' +
-        ' 26/09/2019 ||        ||  £100 || £100 '
+        ` ${currentDate} ||        ||  £100 || £100 `
+      );
+    });
+
+    it('can show multiple transactions in order', () => {
+      bank.deposit(1500);
+      bank.deposit(200);
+      bank.withdraw(450);
+      bank.deposit(50);
+      expect(bank.showStatement()).toMatch(
+          `    date    || credit || debit || balance \n` +
+        ` ${currentDate} ||      || £50 || £1300 \n` +
+        ` ${currentDate} || £450 ||      || £1250 \n` +
+        ` ${currentDate} ||      ||  £200 || £1700 \n` +
+        ` ${currentDate} ||      ||  £1500 || £1500 \n`
       );
     });
   });
