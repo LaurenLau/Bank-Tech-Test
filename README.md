@@ -2,8 +2,17 @@
 
 ### Using this application
 
-1. Type `node` into the command line
+1. Install node and type `node` into the command line
 2. Once in node REPL. Type `Bank = require('../lib/bank')`
+3. Next, type `bank = new Bank()`
+
+### Interacting with this application
+
+* Type `bank.deposit(amount)` to deposit funds
+* Type `bank.withdraw(amount)` to withdraw funds
+* Type `bank.showStatement()` to see a list of all transactions
+
+`amount` can only be an interger value 
 
 ### Requirements
 
