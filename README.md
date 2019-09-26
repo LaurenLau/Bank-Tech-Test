@@ -3,7 +3,7 @@
 ### Using this application
 
 1. Type `node` into the command line
-2. Once in node REPL. Type `.load ./lib/bank.js`
+2. Once in node REPL. Type `Bank = require('../lib/bank')`
 
 ### Requirements
 
